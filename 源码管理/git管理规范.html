@@ -1,0 +1,664 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>git管理规范</title>
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<style type="text/css">
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+</head>
+<body>
+<p>*
+Title: git管理规范</p>
+
+<p>Description: 定义了个信公司内部git使用中需要普遍遵循的惯例和要求</p>
+
+<p>Author: 董霖</p>
+
+<p>Date: 2015/4/19</p>
+
+<p>*</p>
+
+<h1 id="toc_0">目录</h1>
+
+<p><a href="#a1">流程规范</a></p>
+
+<p><a href="#a2">命名规则</a></p>
+
+<p><a href="#a3">注意事项</a></p>
+
+<p><a href="#a4">修订日志</a></p>
+
+<div id="a1"></div>
+
+<h1 id="toc_1">流程规范</h1>
+
+<p>使用公司内部GitLab管理git工程，地址：<a href="https://115.236.68.62:9990">https://115.236.68.62:9990</a></p>
+
+<p>根据工作安排设置各组员的代码访问权限。参与项目开发的人员赋予<code>Developer</code>权限，打包机git帐号赋予<code>Report</code>只读权限。</p>
+
+<p>组员使用各自帐号拉取和提交代码。</p>
+
+<p><strong>分支介绍</strong></p>
+
+<ul>
+<li><p>master分支</p>
+
+<p>主分支，处于随时可发布状态，每个发布版本需要在master打<code>tag</code>;master分支<font color=#ff0000>没有commit</font>操作，只合并develop分支和hotfix分支代码;</p></li>
+<li><p>develop分支</p>
+
+<p>开发分支，保留最新开发进度代码;常规需求和bug修改都在develop上修改;发布版本后合并到master分支上;</p>
+
+<p>合并方法</p>
+
+<pre><code class="language-git">    git checkout master
+    git merge --squash develop
+    git tag -a 1.2.1
+    git checkout develop</code></pre></li>
+<li><p>feature分支</p>
+
+<p>功能分支，起源develop分支，完成后合并到develop分支，由主管根据具体需求与组员讨论决定是否需要此分支</p></li>
+<li><p>hotfix分支</p>
+
+<p>修改bug分支，基于master tag切出分支，完成后合并到master分支，并打tag(根据实际情况考虑是否合并到develop分支） ,老版本添加新功能时也使用此分支名字;</p></li>
+<li><p>branch分支</p>
+
+<p>基于master tag 切出分支，独立于master分支之外，单独维护；开发过程不需要基于此分支再次切develop分支</p></li>
+</ul>
+
+<p><img src="./git%E5%B7%A5%E4%BD%9C%E6%B5%81.png" alt="git工作流"></p>
+
+<ul>
+<li><p>对于SDK等项目需要同时维护多个版本分支的情况，需要针对各个版本维护<code>branch分支</code>，开发工作需要在相应的<code>branch分支</code>下进行。</p></li>
+<li><p>定期进行gitlab数据备份，参考：<a href="http://segmentfault.com/a/1190000002439923">使用Gitlab一键安装包后的日常备份恢复与迁移</a></p></li>
+</ul>
+
+<hr>
+
+<div id="a2"></div>
+
+<h1 id="toc_2">命名规则</h1>
+
+<p><strong>git工程命名</strong></p>
+
+<p><code>&lt;大产品&gt;-&lt;小产品&gt;-&lt;平台&gt;-&lt;定制版本&gt;-&lt;test&gt;</code></p>
+
+<p>说明：</p>
+
+<pre><code>大产品：大类产品线，如getui,matchbox,gezhi,earthquake等
+小产品：大类产品线下的主产品、子产品或者辅助工具，如sdk,app,devtool,extensiontool等
+平台：产品运行的操作系统或语言版本，如android,ios,wp,linux,c,java等
+定制版本：针对某一特定客户或者特定需求，基于原有产品研发的定制版本，如haier,edj等
+test：如果是测试工程（如UI自动化），在相应的工程后面添加-test</code></pre>
+
+<p>示例：</p>
+
+<ul>
+<li>earthquake-report-ios</li>
+<li>getui-sdk2-android-haier</li>
+<li>gezhi-app-android</li>
+<li>gezhi-app-android-test</li>
+</ul>
+
+<p><strong>develop分支</strong></p>
+
+<p><code>develop</code></p>
+
+<p><strong>branch分支命名</strong></p>
+
+<p><code>branch-&lt;版本名称&gt;-&lt;分支创建日期&gt;</code></p>
+
+<p>说明：</p>
+
+<pre><code>版本名称：根据产品要求定义的版本名称，如2.4.1.0，1.4.0，0.1.0.0等    
+分支创建日期：该branch分支创建的日期，以&quot;年月日_时分秒&quot;形式表示</code></pre>
+
+<p>示例：</p>
+
+<ul>
+<li><code>branch-2.4.1.0-20141220_172012</code></li>
+<li><code>branch-0.1.0.0-20150403_223019</code></li>
+</ul>
+
+<p><strong>tag命名</strong></p>
+
+<p><code>tag-&lt;版本名称&gt;-&lt;版本Code&gt;-&lt;创建日期&gt;</code></p>
+
+<p>说明：</p>
+
+<pre><code>版本名称：根据产品要求定义的版本名称，如2.4.1.0，1.4.0，0.1.0.0等
+版本Code：如果是Android App工程，需要额外指明VersionCode；如果是其他类型的工程，则无需添加该字段
+创建日期：发布tag创建的日期，以&quot;年月日_时分秒&quot;形式表示</code></pre>
+
+<p>示例：</p>
+
+<ul>
+<li><code>tag-2.4.1.0-20141220_172012</code></li>
+<li><code>tag-0.1.0.0-1-20150403_223019</code></li>
+</ul>
+
+<p><strong>hotfix分支命名</strong></p>
+
+<p><code>hotfix-&lt;基于的tag版本名称&gt;-&lt;功能名&gt;-&lt;分支创建日期&gt;</code></p>
+
+<p>说明：</p>
+
+<pre><code>基于的tag版本名称：指明基于哪个发布tag版本名称进行hotfix，与相应的发布tag名称对应，如2.4.1.0，1.4.0，0.1.0.0等
+功能名：修改bug名称或功能名字
+分支创建日期：该hotfix分支创建的日期，以年月日_时分秒形式表示</code></pre>
+
+<p>示例：</p>
+
+<ul>
+<li><code>hotfix-2.4.1.0-20141220_172012</code></li>
+<li><code>hotfix-0.1.0.0-20150403_223019</code></li>
+</ul>
+
+<p><strong>feature分支命名</strong></p>
+
+<p><code>feature-&lt;目标版本号&gt;-&lt;功能名&gt;-&lt;分支创建时间&gt;</code></p>
+
+<p>sdk 分支如果需要衍生feature分支，命名规则</p>
+
+<p><code>feature-&lt;目标版本号&gt;-&lt;功能名&gt;-&lt;分支名称&gt;-&lt;分支创建时间&gt;</code> <font color=#FF0000>注:不推荐</font></p>
+
+<p>说明：</p>
+
+<pre><code>功能名：指明该feature分支的目的，用关键字概述功能要点，如quickconnect，serverfilter,connectback等
+目标版本号：该功能目标发布版本
+分支创建日期：该feature分支创建的日期，以年月日_时分秒形式表示</code></pre>
+
+<p>示例：</p>
+
+<ul>
+<li><code>feature-quickconnect-2.4.1.0</code></li>
+<li><code>feature-connectback-0.1.0.0</code></li>
+</ul>
+
+<hr>
+
+<div id="a3"></div>
+
+<h1 id="toc_3">注意事项</h1>
+
+<p><strong>git工程根目录下必须有.gitignore文件</strong></p>
+
+<p>使用.gitignore文件可以避免将临时文件、自动生成文件提交到仓库中，语法如下：<a href="http://www.cnblogs.com/haiq/archive/2012/12/26/2833746.html">Git的.gitignore 配置</a></p>
+
+<p>典型的.gitignore文件示例如下</p>
+
+<p>Android：</p>
+
+<p>参考Android.gitignore</p>
+
+<p><a href="https://115.236.68.62:9990/frontend/gexin-standard/tree/master/gitignore%E6%A8%A1%E6%9D%BF">gexin-standard/gitignore模板</a>/Android.gitignore</p>
+
+<p>iOS:</p>
+
+<p>参考ios.gitignore</p>
+
+<p><a href="https://115.236.68.62:9990/frontend/gexin-standard/tree/master/gitignore%E6%A8%A1%E6%9D%BF">gexin-standard/gitignore模板</a>/ios.gitignore</p>
+
+<p>WP:</p>
+
+<p>参考VisualStudio.gitignore</p>
+
+<p><a href="https://115.236.68.62:9990/frontend/gexin-standard/tree/master/gitignore%E6%A8%A1%E6%9D%BF">gexin-standard/gitignore模板</a>/VisualStudio.gitignore</p>
+
+<p>C/C++:</p>
+
+<p>参考C++.gitignore</p>
+
+<p><a href="https://115.236.68.62:9990/frontend/gexin-standard/tree/master/gitignore%E6%A8%A1%E6%9D%BF">gexin-standard/gitignore规范</a>/C++.gitignore</p>
+
+<p><strong>对于需要手工修改的文件如何提交</strong></p>
+
+<p>部分配置文件如打包环境配置build.env等，会存在每台电脑上都需要进行相应的手工设置的问题，如果有人不小心提交了这类文件，会导致影响到其他人。对于这类文件，代码库中不直接提交build.env，而是提交build.env.default，由开发人员或者打包脚本负责修改成build.env然后使用。</p>
+
+<p><strong>尽量使用git pull直接合并分支</strong></p>
+
+<p>虽然可以通过git fetch或者git pull --no-commit方式只获取最新代码当不立即提交，但是这种方式可能导致本地修改代码长时间不提交，git修改线长时间不合并的问题。强制性的commit可以收敛git修改线，减少合并中的冲突。</p>
+
+<hr>
+
+<div id="a4"></div>
+
+<h1 id="toc_4">修订日志</h1>
+
+<p><strong>2015.4.19</strong></p>
+
+<ul>
+<li>初稿</li>
+</ul>
+
+<p><strong>2015.6.29</strong></p>
+
+<ul>
+<li>修订:修改开发流程，以develop分支为主要开发分支，使master分支独立于开发流程之外</li>
+</ul>
+
+<script type="text/javascript">
+self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{};var Prism=function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{encode:function(e){return e instanceof n?new n(e.type,t.util.encode(e.content),e.alias):"Array"===t.util.type(e)?e.map(t.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=t.util.clone(e[r]));return a;case"Array":return e.map(function(e){return t.util.clone(e)})}return e}},languages:{extend:function(e,n){var a=t.util.clone(t.languages[e]);for(var r in n)a[r]=n[r];return a},insertBefore:function(e,n,a,r){r=r||t.languages;var i=r[e];if(2==arguments.length){a=arguments[1];for(var l in a)a.hasOwnProperty(l)&&(i[l]=a[l]);return i}var s={};for(var o in i)if(i.hasOwnProperty(o)){if(o==n)for(var l in a)a.hasOwnProperty(l)&&(s[l]=a[l]);s[o]=i[o]}return t.languages.DFS(t.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=s)}),r[e]=s},DFS:function(e,n,a){for(var r in e)e.hasOwnProperty(r)&&(n.call(e,r,e[r],a||r),"Object"===t.util.type(e[r])?t.languages.DFS(e[r],n):"Array"===t.util.type(e[r])&&t.languages.DFS(e[r],n,r))}},highlightAll:function(e,n){for(var a,r=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'),i=0;a=r[i++];)t.highlightElement(a,e===!0,n)},highlightElement:function(a,r,i){for(var l,s,o=a;o&&!e.test(o.className);)o=o.parentNode;if(o&&(l=(o.className.match(e)||[,""])[1],s=t.languages[l]),s){a.className=a.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=a.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var u=a.textContent;if(u){u=u.replace(/^(?:\r?\n|\r)/,"");var g={element:a,language:l,grammar:s,code:u};if(t.hooks.run("before-highlight",g),r&&self.Worker){var c=new Worker(t.filename);c.onmessage=function(e){g.highlightedCode=n.stringify(JSON.parse(e.data),l),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(g.element),t.hooks.run("after-highlight",g)},c.postMessage(JSON.stringify({language:g.language,code:g.code}))}else g.highlightedCode=t.highlight(g.code,g.grammar,g.language),t.hooks.run("before-insert",g),g.element.innerHTML=g.highlightedCode,i&&i.call(a),t.hooks.run("after-highlight",g)}}},highlight:function(e,a,r){var i=t.tokenize(e,a);return n.stringify(t.util.encode(i),r)},tokenize:function(e,n){var a=t.Token,r=[e],i=n.rest;if(i){for(var l in i)n[l]=i[l];delete n.rest}e:for(var l in n)if(n.hasOwnProperty(l)&&n[l]){var s=n[l];s="Array"===t.util.type(s)?s:[s];for(var o=0;o<s.length;++o){var u=s[o],g=u.inside,c=!!u.lookbehind,f=0,h=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var d=r[p];if(r.length>e.length)break e;if(!(d instanceof a)){u.lastIndex=0;var m=u.exec(d);if(m){c&&(f=m[1].length);var y=m.index-1+f,m=m[0].slice(f),v=m.length,k=y+v,b=d.slice(0,y+1),w=d.slice(k+1),N=[p,1];b&&N.push(b);var O=new a(l,g?t.tokenize(m,g):m,h);N.push(O),w&&N.push(w),Array.prototype.splice.apply(r,N)}}}}}return r},hooks:{all:{},add:function(e,n){var a=t.hooks.all;a[e]=a[e]||[],a[e].push(n)},run:function(e,n){var a=t.hooks.all[e];if(a&&a.length)for(var r,i=0;r=a[i++];)r(n)}}},n=t.Token=function(e,t,n){this.type=e,this.content=t,this.alias=n};if(n.stringify=function(e,a,r){if("string"==typeof e)return e;if("Array"===t.util.type(e))return e.map(function(t){return n.stringify(t,a,e)}).join("");var i={type:e.type,content:n.stringify(e.content,a,r),tag:"span",classes:["token",e.type],attributes:{},language:a,parent:r};if("comment"==i.type&&(i.attributes.spellcheck="true"),e.alias){var l="Array"===t.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(i.classes,l)}t.hooks.run("wrap",i);var s="";for(var o in i.attributes)s+=o+'="'+(i.attributes[o]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+s+">"+i.content+"</"+i.tag+">"},!self.document)return self.addEventListener?(self.addEventListener("message",function(e){var n=JSON.parse(e.data),a=n.language,r=n.code;self.postMessage(JSON.stringify(t.util.encode(t.tokenize(r,t.languages[a])))),self.close()},!1),self.Prism):self.Prism;var a=document.getElementsByTagName("script");return a=a[a.length-1],a&&(t.filename=a.src,document.addEventListener&&!a.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)),self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism);
+</script>
+<script type="text/javascript">
+Prism.languages.git={comment:/^#.*$/m,string:/("|')(\\?.)*?\1/m,command:{pattern:/^.*\$ git .*$/m,inside:{parameter:/\s(--|-)\w+/m}},coord:/^@@.*@@$/m,deleted:/^-(?!-).+$/m,inserted:/^\+(?!\+).+$/m,commit_sha1:/^commit \w{40}$/m};
+</script>
+</body>
+
+</html>

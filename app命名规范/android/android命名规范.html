@@ -1,0 +1,504 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>目录</title>
+
+</head>
+<body>
+<p>*</p>
+
+<p>Title: Android App 命名规范</p>
+
+<p>Description: 简要android app 命名规范</p>
+
+<p>Author: xz</p>
+
+<p>Date: 20150625</p>
+
+<p>*</p>
+
+<h1>目录</h1>
+
+<p><a href="#package">包package</a></p>
+
+<p><a href="#controlid">控件id</a></p>
+
+<p><a href="#layout">布局文件(Layout)</a></p>
+
+<p><a href="#drawable">资源文件(drawable)</a></p>
+
+<div id="package"></div>
+
+
+<h2>package</h2>
+
+<p><strong>包（packages）: 全部使用小写字母。</strong></p>
+
+<p><strong>一级包名为com</strong></p>
+
+<p><strong>二级包名为gexin(getui)</strong></p>
+
+<p><strong>三级包名根据应用进行命名</strong></p>
+
+<p><strong>四级包名根据类的具体功能类型命名</strong></p>
+
+<p>eg:com.getui.gehuo.activity</p>
+
+<table>
+<thead>
+<tr>
+<th>包名                         </th>
+<th>说明                        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>com.getui.xx.activity          </td>
+<td>Activity类  </td>
+</tr>
+<tr>
+<td>com.getui.xx.entity            </td>
+<td>实体</td>
+</tr>
+<tr>
+<td>com.getui.xx.adapter           </td>
+<td>页面用到的Adapter类 (适配器的类)</td>
+</tr>
+<tr>
+<td>com.getui.xx.util          </td>
+<td>工具包类</td>
+</tr>
+<tr>
+<td>com.getui.xx.logic         </td>
+<td>逻辑类</td>
+</tr>
+<tr>
+<td>com.getui.xx.db.dao            </td>
+<td>数据库dao and entity类</td>
+</tr>
+<tr>
+<td>com.getui.xx.db.logic          </td>
+<td>logic</td>
+</tr>
+<tr>
+<td>com.getui.xx.net.entity            </td>
+<td>网络实体类</td>
+</tr>
+<tr>
+<td>com.getui.xx.net.logic         </td>
+<td>网络逻辑</td>
+</tr>
+<tr>
+<td>com.getui.xx.service           </td>
+<td>service服务</td>
+</tr>
+<tr>
+<td>com.getui.xx.receiver          </td>
+<td>Broadcast服务</td>
+</tr>
+<tr>
+<td>com.getui.xx.interface         </td>
+<td>接口</td>
+</tr>
+<tr>
+<td>com.getui.xx.dialog            </td>
+<td>dialog类</td>
+</tr>
+<tr>
+<td>com.getui.xx.fragment          </td>
+<td>fragment类</td>
+</tr>
+<tr>
+<td>com.getui.xx.constant          </td>
+<td>常量包类</td>
+</tr>
+<tr>
+<td>com.getui.xx.config            </td>
+<td>配置类</td>
+</tr>
+<tr>
+<td>com.getui.xx.listener          </td>
+<td>监听器</td>
+</tr>
+<tr>
+<td>com.getui.xx.模块名称.api </td>
+<td> 独立或第三方模块包</td>
+</tr>
+<tr>
+<td>com.getui.xx.widget            </td>
+<td>自定义控件</td>
+</tr>
+<tr>
+<td>com.getui.xx.widget.xx         </td>
+<td>自定义控件xx</td>
+</tr>
+</tbody>
+</table>
+
+
+<div id="controlid"></div>
+
+
+<h2>控件id</h2>
+
+<p>以缩写为主，部分语义不明确的采用简写或全拼</p>
+
+<table>
+<thead>
+<tr>
+<th>控件</th>
+<th>缩写</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LinearLayout</td>
+<td>ll</td>
+<td>llMain</td>
+</tr>
+<tr>
+<td>RelativeLayout</td>
+<td>rl</td>
+<td>rlMain</td>
+</tr>
+<tr>
+<td>FrameLayout</td>
+<td>fl</td>
+<td></td>
+</tr>
+<tr>
+<td>AbsoluteLayout</td>
+<td>al</td>
+<td></td>
+</tr>
+<tr>
+<td>TextView</td>
+<td>tv</td>
+<td>tvTitle</td>
+</tr>
+<tr>
+<td>Button</td>
+<td>btn</td>
+<td>btnLogin</td>
+</tr>
+<tr>
+<td>ImageButton</td>
+<td>iBtn</td>
+<td>iBtnLogin</td>
+</tr>
+<tr>
+<td>ImageView</td>
+<td>iv</td>
+<td></td>
+</tr>
+<tr>
+<td>CheckBox</td>
+<td>cb</td>
+<td></td>
+</tr>
+<tr>
+<td>RadioButton</td>
+<td>rb</td>
+<td></td>
+</tr>
+<tr>
+<td>EditText</td>
+<td>et</td>
+<td>etPwd</td>
+</tr>
+<tr>
+<td>ProgressBar</td>
+<td> proBar</td>
+<td></td>
+</tr>
+<tr>
+<td>SeekBar</td>
+<td>skBar</td>
+<td></td>
+</tr>
+<tr>
+<td>AutoCompleteTextView</td>
+<td>autoTv</td>
+<td></td>
+</tr>
+<tr>
+<td>WebView</td>
+<td>wv</td>
+<td></td>
+</tr>
+<tr>
+<td>Spinner</td>
+<td>spn</td>
+<td></td>
+</tr>
+<tr>
+<td>ScollView</td>
+<td>sv</td>
+<td></td>
+</tr>
+<tr>
+<td>ListView</td>
+<td>lv</td>
+<td></td>
+</tr>
+<tr>
+<td>ExpandableList</td>
+<td>explv</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+<div id="layout"></div>
+
+
+<h2>布局文件(Layout)</h2>
+
+<h6>1、Activity</h6>
+
+<p><strong>activity_module.xml</strong></p>
+
+<pre><code>eg:activity_main.xml、activity_splash.xml
+</code></pre>
+
+<h6>2、Dialog</h6>
+
+<p><strong>dlg_module.xml</strong></p>
+
+<pre><code>eg:dlg_error.xml、dlg_progress.xml
+</code></pre>
+
+<h6>3、fragment</h6>
+
+<p><strong>fragment_module.xml</strong></p>
+
+<pre><code>eg:fragment_ad.xml、fragment_setting.xml
+</code></pre>
+
+<h6>4、listitem</h6>
+
+<p><strong>listitem_module.xml</strong></p>
+
+<pre><code>eg:listitem_ad.xml、listitem_city.xml
+</code></pre>
+
+<h6>5、widget</h6>
+
+<p><strong>widget_module.xml</strong></p>
+
+<pre><code>eg:widget_weather.xml
+</code></pre>
+
+<h5>6、include</h5>
+
+<p><strong>include_module.xml</strong></p>
+
+<pre><code>eg:include_head.xml、include_foot.xml
+</code></pre>
+
+<div id="drawable"></div>
+
+
+<h2>资源文件(drawable)</h2>
+
+<h6>图标</h6>
+
+<p><strong>ic_module</strong></p>
+
+<pre><code>eg:ic_login_title.png
+</code></pre>
+
+<h6>背景图片</h6>
+
+<p><strong>module_bg_name</strong></p>
+
+<pre><code>eg:login_bg.png
+</code></pre>
+
+<h6>button</h6>
+
+<p><strong>module_btn_name</strong></p>
+
+<pre><code>eg:login_view_btn_login_normal.png
+
+    login_view_btn_register_normal.png
+
+    login_view_btn_register_pressed.png
+
+    login_view_btn_register_disabled.png
+
+    login_view_btn_register_pressed.xml(shape)
+</code></pre>
+
+<p><strong>selector</strong>
+   <strong>login_view_btn_register_selector.xml</strong></p>
+
+<h6>other</h6>
+
+<p><strong>module_xx.png</strong></p>
+
+<h3>注:</h3>
+
+<p><font size=3 color="#FF0000">代码中不要出现中文(注释除外)</font></p>
+
+<hr />
+
+<ul>
+<li>初稿</li>
+</ul>
+
+</body>
+</html>

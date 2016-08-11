@@ -1,0 +1,384 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>目录</title>
+
+</head>
+<body>
+<p>*
+Title: 客户端发布包提交规范</p>
+
+<p>Description: 本文档定义了各个提交目录的路径命名规范</p>
+
+<p>Author: 董霖</p>
+
+<p>Date: 2015/4/19</p>
+
+<p>*</p>
+
+<h1>目录</h1>
+
+<p><a href="#lgeneral">通用</a></p>
+
+<p><a href="#lgetuiandroid">个推SDK Android版</a></p>
+
+<p><a href="#lgetuiios">个推SDK iOS版</a></p>
+
+<p><a href="#lgezhiandroid">个知 Android版</a></p>
+
+<p><a href="#lgehuoandroid">个火 Android版</a></p>
+
+<p><a href="#ldizhenios">地震速报 iOS版</a></p>
+
+<p><a href="#lrevision">修订日志</a></p>
+
+<div id="lgeneral"></div>
+
+
+<h1>通用</h1>
+
+<p><strong>发布包svn路径</strong></p>
+
+<p>目前通过svn管理各客户端发布包</p>
+
+<p>svn路径：svn://192.168.11.2/gexin/distribution</p>
+
+<p><strong>关于dev和tags目录的说明</strong></p>
+
+<p>dev中放置开发过程中提测的各个版本</p>
+
+<p>tags中则是最终发布后的版本，tags中的包应当为dev中用于正式发布的版本，直接复制到tags目录下即可。</p>
+
+<div id="lgetuiandroid"></div>
+
+
+<h1>个推SDK Android版</h1>
+
+<p>根目录：</p>
+
+<p>getui/GetuiSDK_android/</p>
+
+<p>包路径：</p>
+
+<p><code>GetuiSDK_&lt;版本号&gt;/&lt;dev|tags&gt;/GetuiSDK_android_release|debug_&lt;该版本涉及到修改的插件版本号&gt;_&lt;插件名&gt;_&lt;yyyymmdd&gt;\_&lt;hhmmss&gt;_&lt;主包版本号&gt;_&lt;EXT版本号&gt;_&lt;GBD版本号&gt;_&lt;LBS版本号&gt;_&lt;变更概述&gt;.zip</code></p>
+
+<pre><code>&lt;该版本涉及到修改的插件版本号&gt;：本次打包针对的主包或者插件，如果针对主包打包，则填MAIN；如果为插件包，指明插件及版本
+&lt;插件名&gt;：本次打包中如果涉及到的修改插件，需要指明插件名称，去掉tdata_部分
+&lt;该版本涉及到修改的插件版本号&gt;和&lt;插件名&gt;可以同时包含多个，用+号连接
+</code></pre>
+
+<p>包名示例：</p>
+
+<ul>
+<li><code>GetuiSDK_android_release_2.3.0.0_GBD1.4.0_CDG635_20150417_091900_EXT1.1.0_GBD1.4.0_LBS3.1.0_新增看护统计版本升至1.4.0.zip</code></li>
+<li><code>GetuiSDK_android_release_2.3.0.0_LBS3.1.0_cuQ994_20150303_175551_EXT1.1.0_GBD1.2.0_LBS3.1.0_修复重新协商逻辑.zip</code></li>
+<li><code>GetuiSDK_android_release_2.4.0.0_EXT1.3.0_bXQ852_20150209_204900_EXT1.3.0_GBD1.2.0_LBS3.0.0_修复DB不一致问题.zip</code></li>
+<li><code>GetuiSDK_android_release_2.4.1.0_LBS3.1.0+GBD1.2.0_btc640+RMs872_20150304_172514_EXT1.3.0_GBD1.2.0_LBS3.1.0_协商机制优化.zip</code></li>
+<li><code>GetuiSDK_android_release_2.3.0.0_MAIN_20150303_175551_EXT1.1.0_GBD1.2.0_LBS3.1.0_修复重新协商逻辑.zip</code></li>
+</ul>
+
+
+<p>模块包括：</p>
+
+<ul>
+<li>MAIN</li>
+<li>EXT</li>
+<li>GBD</li>
+<li>LBS</li>
+</ul>
+
+
+<p><strong>zip文件结构</strong></p>
+
+<pre><code>GetuiSdk&lt;版本号&gt;.jar
+gen.property
+GetuiSdk&lt;版本号&gt;-open-ext-gbd.jar.dex.jar
+GetuiSdk&lt;版本号&gt;-open-ext.jar.dex.jar
+GetuiSdk&lt;版本号&gt;-open-ext-lbs.jar.dex.jar
+GetuiSdk&lt;版本号&gt;_proguard.map
+tdata_ofs162
+tdata_qHd239
+tdata_vps706
+</code></pre>
+
+<p>zip文件示例：</p>
+
+<pre><code>GetuiSdk2.5.0.0.jar
+gen.property
+GetuiSdk2.5.0.0-open-ext-gbd.jar.dex.jar
+GetuiSdk2.5.0.0-open-ext.jar.dex.jar
+GetuiSdk2.5.0.0-open-ext-lbs.jar.dex.jar
+GetuiSdk2.5.0.0_proguard.map
+tdata_ofs162
+tdata_qHd239
+tdata_vps706
+</code></pre>
+
+<div id="lgetuiios"></div>
+
+
+<h1>个推SDK iOS版</h1>
+
+<p>根目录：</p>
+
+<p>getui/GetuiSDK_ios/</p>
+
+<p>包路径：</p>
+
+<p><code>GetuiSDK_&lt;版本号&gt;/&lt;dev|tags&gt;/GetuiSDK_ios_&lt;release|debug&gt;_&lt;主版本号&gt;_&lt;yyyymmdd&gt;_&lt;hhmmss&gt;_&lt;变更概述&gt;.zip</code></p>
+
+<p>路径示例：</p>
+
+<ul>
+<li><code>GetuiSDK_1.1.11/dev/GetuiSDK_ios_release_1.1.11_20150409_145200_支持后台驻留.zip</code></li>
+</ul>
+
+
+<p><strong>zip文件结构</strong></p>
+
+<pre><code>demo
+dist
+  |-include
+      |- GexinSdk.h
+      |- GXSdkError.h
+  |-libGexinSdk-&lt;version&gt;.a
+</code></pre>
+
+<p>zip文件示例：</p>
+
+<pre><code>demo
+dist
+  |-include
+      |- GexinSdk.h
+      |- GXSdkError.h
+  |-libGexinSdk-1.1.11.a
+</code></pre>
+
+<div id="lgezhiandroid"></div>
+
+
+<h1>个知(Android)</h1>
+
+<p>根目录：</p>
+
+<p>gezhi/Gezhi_android</p>
+
+<p>包路径：</p>
+
+<p><code>Gezhi_&lt;版本号&gt;/&lt;dev|tags&gt;/Gezhi_android_&lt;release|debug&gt;_&lt;版本号&gt;_&lt;VersionCode&gt;_&lt;渠道号&gt;_&lt;yyyymmdd&gt;_&lt;hhmmss&gt;_&lt;变更概述&gt;.zip</code></p>
+
+<p>路径示例：</p>
+
+<ul>
+<li><code>Gezhi_2.2.0/dev/Gezhi_android_release_2.2.0_110_yyb_20150409_145200_修复crash问题.zip</code></li>
+</ul>
+
+
+<p>zip文件结构</p>
+
+<pre><code>Gezhi_android_&lt;release|debug&gt;_&lt;版本号&gt;_&lt;VersionCode&gt;_&lt;渠道号&gt;_&lt;yyyymmdd&gt;_&lt;hhmmss&gt;.apk
+Gezhi_proguard.map
+</code></pre>
+
+<p>zip文件示例：</p>
+
+<pre><code>Gezhi_android_release_2.2.0_110_yyb_20150410_115700.apk
+Gezhi_proguard.map
+</code></pre>
+
+<div id="lgehuoandroid"></div>
+
+
+<h1>个火(Android)</h1>
+
+<p>根目录：</p>
+
+<p>gehuo/Gehuo_android</p>
+
+<p>包路径：</p>
+
+<p><code>Gehuo_&lt;版本号&gt;/&lt;dev|tags&gt;/Gehuo_android_&lt;release|debug&gt;_&lt;版本号&gt;_&lt;VersionCode&gt;_&lt;渠道号&gt;_&lt;yyyymmdd&gt;_&lt;hhmmss&gt;_&lt;变更概述&gt;.zip</code></p>
+
+<p>路径示例：</p>
+
+<ul>
+<li><code>Gehuo_0.1.0.0/dev/Gehuo_android_release_0.1.0.0_1_gw_20150410_145200_修复crash问题.zip</code></li>
+</ul>
+
+
+<p>zip文件结构</p>
+
+<pre><code>Gehuo_android_&lt;release|debug&gt;_&lt;版本号&gt;_&lt;VersionCode&gt;_&lt;渠道号&gt;_&lt;yyyymmdd&gt;_&lt;hhmmss&gt;.apk
+Gehuo_proguard.ma
+</code></pre>
+
+<p>zip文件示例：</p>
+
+<pre><code>Gehuo_android_release_0.1.0.0_1_gw_20150410_145200.apk
+Gehuo_proguard.map
+</code></pre>
+
+<div id="lrevision"></div>
+
+
+<h1>修订日志</h1>
+
+<p><strong>2015.4.19</strong></p>
+
+<ul>
+<li>初稿</li>
+</ul>
+
+</body>
+</html>
