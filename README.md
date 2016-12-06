@@ -1,2 +1,2 @@
-# GeTui-document-standard
-GeTui-document-standard
+# HBdocStandard
+HamBurg-document-standard
